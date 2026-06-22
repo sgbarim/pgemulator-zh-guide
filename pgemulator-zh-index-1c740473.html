@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG模拟器 · 日常查询与对照阅读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f9f6f0;
+            font-family: "Noto Serif SC", "Source Han Serif SC", Georgia, "Times New Roman", serif;
+            color: #3b3b3b;
+            line-height: 1.75;
+            padding: 2rem 1.25rem;
+        }
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            background: rgba(255, 251, 245, 0.7);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+        }
+        h1, h2, h3 {
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #2c2c2c;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.5rem;
+            border-left: 6px solid #b7a48b;
+            padding-left: 1.2rem;
+        }
+        .subhead {
+            font-size: 1rem;
+            color: #7a6f62;
+            margin-bottom: 2rem;
+            padding-left: 1.8rem;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.4rem;
+            margin: 2rem 0 0.8rem 0;
+            display: inline-block;
+            border-bottom: 2px solid #d6cab8;
+            padding-bottom: 0.25rem;
+        }
+        h3 {
+            font-size: 1.15rem;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+        p {
+            margin: 0.9rem 0;
+            text-align: justify;
+        }
+        .intro-card {
+            background: #fffdf9;
+            padding: 1.6rem 1.8rem;
+            border-radius: 18px;
+            margin: 2rem 0 1.8rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #ece3d6;
+        }
+        .highlight-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        .highlight-item {
+            flex: 1 1 200px;
+            background: #faf5ed;
+            padding: 1.2rem 1rem;
+            border-radius: 14px;
+            border-left: 4px solid #c4b5a0;
+        }
+        .highlight-item h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #4d4237;
+        }
+        .highlight-item p {
+            font-size: 0.95rem;
+            margin: 0.4rem 0 0 0;
+        }
+        .quote-block {
+            background: #f3ede4;
+            padding: 1.3rem 1.8rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            font-style: normal;
+            border-left: 5px solid #b19f86;
+            color: #3e3a34;
+        }
+        .quote-block p {
+            margin: 0.4rem 0;
+        }
+        .tip-box {
+            background: #eae3d8;
+            padding: 0.8rem 1.2rem;
+            border-radius: 40px 12px 12px 40px;
+            display: inline-block;
+            margin: 0.8rem 0;
+            font-size: 0.95rem;
+            border: 1px solid #d1c3b0;
+        }
+        .faq-slim {
+            margin: 2rem 0 1rem 0;
+        }
+        .faq-slim details {
+            margin: 0.6rem 0;
+            padding: 0.5rem 0.8rem;
+            background: #fcf9f4;
+            border-radius: 12px;
+            border: 1px solid #e4dbcd;
+        }
+        .faq-slim summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #3f3a32;
+            padding: 0.2rem 0;
+        }
+        .faq-slim details p {
+            margin: 0.5rem 0 0.2rem 0;
+            font-size: 0.95rem;
+            padding-left: 0.6rem;
+            color: #4f4a42;
+        }
+        .usage-note {
+            background: #f6efe6;
+            padding: 1.2rem 1.6rem;
+            border-radius: 20px;
+            margin: 2rem 0 0.5rem 0;
+        }
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #ddd2c0;
+            font-size: 0.9rem;
+            color: #6b6156;
+            text-align: center;
+        }
+        a {
+            color: #3d618a;
+            text-decoration: none;
+            border-bottom: 1px dotted #b7a78e;
+            transition: border 0.2s;
+        }
+        a:hover {
+            border-bottom: 2px solid #5b7d9e;
+        }
+        .inline-link {
+            font-weight: 450;
+        }
+        @media (max-width: 500px) {
+            body { padding: 1rem 0.8rem; }
+            .container { padding: 1.8rem 1.2rem; }
+            h1 { font-size: 1.7rem; padding-left: 0.8rem; }
+            .highlight-item { flex: 1 1 100%; }
+            .quote-block { padding: 1rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>PG模拟器</h1>
+    <div class="subhead">日常查询 · 对照阅读 · 延伸参考</div>
+
+    <p style="font-size: 1.05rem; margin-bottom: 0.2rem;">
+        一个习惯一旦养成，查资料便成了顺手的动作。无论是比对参数、复现操作，还是随手翻翻某条指令的上下文，一个好用的模拟环境总能减少阻力。
+        <a href="https://pgemulator-zh.com" class="inline-link">PG模拟器</a> 
+        正是为此而生的一个轻量入口——不标榜无所不能，但在日常查询与对照场景里，它提供了一个安静、直接、可接近的界面。
+    </p>
+
+    <!-- 亮点卡片 -->
+    <div class="intro-card">
+        <p style="margin-top: 0; font-weight: 450;">无需复杂配置，打开就能用。这里没有广告围栏，也没有多余的跳转。</p>
+        <p>从查询某个函数的语法，到尝试一段组合语句，PG模拟器 保持着一种「翻开书就能找到段落」的质感。适合偶尔需要脱离文档、快速验证想法的午休时刻，也适合对照教程一步步检查自己的理解。</p>
+    </div>
+
+    <h2>日常使用中的三个亮点</h2>
+    <div class="highlight-grid">
+        <div class="highlight-item">
+            <h3>📋 对照式布局</h3>
+            <p>左侧是操作区，右侧是示例输出；或者上下分栏。眼睛不用在标签页之间来回奔波。</p>
+        </div>
+        <div class="highlight-item">
+            <h3>📎 延伸阅读嵌入</h3>
+            <p>每个典型查询旁附带一段简短的说明或常见变体，像书页边缘的注释。</p>
+        </div>
+        <div class="highlight-item">
+            <h3>🧩 低干扰体验</h3>
+            <p>没有倒计时、弹窗、强制注册。打开就是输入与反馈，用完即走。</p>
+        </div>
+    </div>
+
+    <!-- 使用建议 + 引用块 -->
+    <div class="quote-block">
+        <p style="font-weight: 450;">“白天记不清某个聚合函数的参数顺序，晚上想快速试一下窗口子句的效果——这种时候，我习惯打开 PG模拟器，像翻一本随手放在桌上的手册。” </p>
+        <p style="text-align: right; margin-top: 0.4rem; font-size: 0.9rem;">—— 一位常做数据对照的读者</p>
+    </div>
+
+    <p>当然，它并不试图替代完整的本地环境或生产调试工具。对于需要压测、高并发或大量数据导入的场景，建议回到实装实例中操作。但在日常的知识验证和语法对照层面，它提供了一个足够舒适的缓冲地带。</p>
+
+    <h2>使用建议</h2>
+    <div class="usage-note">
+        <p>• 适合快速验证SQL片段、函数用法、运算符优先级。<br>
+        • 适合在阅读教程时，把示例抄进去跑一遍，即时观察输出。<br>
+        • 适合记录笔记前，确认某段语句不会因为手误而错误引用。<br>
+        • 如果遇到需要持久化表结构或大批量数据导入，请移步本地或云端完整实例。</p>
+    </div>
+
+    <div class="tip-box">
+        💡 小提示：把常用查询语句片段存成文本，每次打开 <a href="https://pgemulator-zh.com">PG模拟器</a> 后直接粘贴，能省下重新敲打的时间。
+    </div>
+
+    <h2>关于访问与内容</h2>
+    <p><a href="https://pgemulator-zh.com">PG模拟器</a> 所呈现的查询结果与行为，基于通用 Postgres 语义，但模拟环境无法覆盖所有边缘版本差异和扩展模块。对于生产级依赖，请以官方文档或实际运行环境为准。</p>
+    <p>站点本身没有复杂的注册体系，也不需要留下个人信息。访问即用，用完可关。偶尔回来查个东西，它还在那里。</p>
+
+    <!-- FAQ 摘要（非完整 FAQ，仅摘两个常见疑问） -->
+    <div class="faq-slim">
+        <h2 style="margin-top: 0.5rem;">简要疑问摘录</h2>
+        <details>
+            <summary>模拟器与本地安装的 Postgres 有什么主要差别？</summary>
+            <p>模拟环境侧重于语法验证、查询逻辑对照和快速上手，不包含存储过程调试、系统表深度操作或大量数据导入。日常查询与对照完全够用，但涉及扩展或超级用户权限的功能请回到完整环境。</p>
+        </details>
+        <details>
+            <summary>是否需要安装任何插件或客户端？</summary>
+            <p>不需要。打开浏览器，进入 <a href="https://pgemulator-zh.com">PG模拟器</a> 页面即可使用。所有交互都在前端完成，无需下载或注册。</p>
+        </details>
+    </div>
+
+    <div class="footer-note">
+        <p>— 适合查询、对照、延伸阅读 · 保持简单 —</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">内容基于通用 PG 语义，所有结果仅供参考。</p>
+    </div>
+
+</div>
+</body>
+</html>
